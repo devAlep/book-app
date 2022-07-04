@@ -14,15 +14,14 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Flutter Demo',
+      title: 'GoodReads',
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
         fontFamily: GoogleFonts.poppins().fontFamily,
-        scaffoldBackgroundColor:const Color(0xff1D212B),
-        primaryColor:const Color(0xff1D212B),
-
+        scaffoldBackgroundColor: const Color(0xff1D212B),
+        primaryColor: const Color(0xff1D212B),
       ),
-      home:const  HomePage(email: 'alepRohit@gmail.com')
+      home: const LoginPage(),
     );
   }
 }

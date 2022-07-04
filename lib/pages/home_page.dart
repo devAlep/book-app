@@ -8,29 +8,37 @@ import 'package:untitled/widgets/bottom_nav_bar.dart';
 class HomePage extends StatefulWidget {
   const HomePage({
     Key? key,
-    required this.email,
   }) : super(key: key);
 
-  final String email;
 
   @override
   State<HomePage> createState() => _HomePageState();
 }
 
 class _HomePageState extends State<HomePage> {
+
   final _screens = const [
-    DashboardScreen(),
-    SearchScreen(),
-    FavouritesScreen(),
-    SettingsScreen()
+    DashboardScreen(
+
+    ),
+     SearchScreen(),
+     FavouritesScreen(),
+     SettingsScreen()
   ];
 
   int _currentSelectedIndex = 0;
 
   @override
   Widget build(BuildContext context) {
-    return  Scaffold(
-      body: _screens[_currentSelectedIndex],
+    return Scaffold(
+      body: Padding(
+        padding: const EdgeInsets.only(
+          top: 16.0,
+          left: 32.0,
+          right: 32.0,
+        ),
+        child: _screens[_currentSelectedIndex],
+      ),
       bottomNavigationBar: BottomNavBar(
         currentIndex: _currentSelectedIndex,
         onItemSelected: (index) {
