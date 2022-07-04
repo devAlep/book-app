@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:untitled/pages/home_page.dart';
 
 class LoginPage extends StatefulWidget {
   const LoginPage({Key? key}) : super(key: key);
@@ -30,7 +31,6 @@ class _LoginPageState extends State<LoginPage> {
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
-        backgroundColor: const Color(0xffCAD5E2),
         body: Padding(
           padding: const EdgeInsets.symmetric(
             horizontal: 16.0,
@@ -42,7 +42,11 @@ class _LoginPageState extends State<LoginPage> {
             children: [
               const Text(
                 'Login',
-                style: TextStyle(fontSize: 42.0, fontWeight: FontWeight.bold),
+                style: TextStyle(
+                  fontSize: 42.0,
+                  fontWeight: FontWeight.bold,
+                  color: Colors.white,
+                ),
               ),
               const SizedBox(
                 height: 8.0,
@@ -51,39 +55,54 @@ class _LoginPageState extends State<LoginPage> {
                 'Please sign in to continue',
                 style: TextStyle(
                   fontSize: 22.0,
+                  color: Colors.white,
                 ),
               ),
               const SizedBox(
                 height: 32.0,
               ),
               TextField(
-                cursorColor: Colors.black,
                 controller: _emailController,
+                cursorColor: Colors.white60,
                 keyboardType: TextInputType.emailAddress,
                 cursorHeight: 22.0,
+                style: const TextStyle(
+                  color: Colors.white,
+                ),
                 decoration: InputDecoration(
                   label: const Text('Email'),
-                  prefixIcon: Icon(
+                  prefixIcon: const Icon(
                     Icons.mail,
-                    color: Colors.grey.shade600,
+                    color: Colors.white60,
                   ),
                   labelStyle: TextStyle(
                     color: Colors.grey.shade700,
                   ),
-                  border: const OutlineInputBorder(),
-                  focusColor: Colors.grey.shade500,
-                  focusedBorder: const OutlineInputBorder(),
+                  border: const OutlineInputBorder(
+                    borderSide: BorderSide(
+                      color: Colors.white60,
+                    ),
+                  ),
+                  focusColor: Colors.white60,
+                  focusedBorder: const OutlineInputBorder(
+                    borderSide: BorderSide(
+                      color: Colors.white60,
+                    ),
+                  ),
                 ),
               ),
               const SizedBox(
                 height: 12.0,
               ),
               TextField(
-                cursorColor: Colors.black,
+                cursorColor: Colors.white60,
                 controller: _passwordController,
                 keyboardType: TextInputType.visiblePassword,
                 obscureText: _isPasswordVisible ? false : true,
                 cursorHeight: 22.0,
+                style: const TextStyle(
+                  color: Colors.white,
+                ),
                 decoration: InputDecoration(
                   label: const Text('Password'),
                   suffixIcon: GestureDetector(
@@ -91,21 +110,25 @@ class _LoginPageState extends State<LoginPage> {
                       _togglePassword();
                     },
                     child: _isPasswordVisible
-                        ? Icon(
-                      Icons.lock_open,
-                      color: Colors.grey.shade600,
-                    )
-                        : Icon(
-                      Icons.lock,
-                      color: Colors.grey.shade600,
-                    ),
+                        ? const Icon(
+                            Icons.lock_open,
+                            color: Colors.white60,
+                          )
+                        : const Icon(
+                            Icons.lock,
+                            color: Colors.white60,
+                          ),
                   ),
-                  labelStyle: TextStyle(
-                    color: Colors.grey.shade700,
+                  labelStyle: const TextStyle(
+                    color: Colors.white60,
                   ),
                   border: const OutlineInputBorder(),
                   focusColor: Colors.grey.shade500,
-                  focusedBorder: const OutlineInputBorder(),
+                  focusedBorder: const OutlineInputBorder(
+                    borderSide: BorderSide(
+                      color: Colors.white60,
+                    ),
+                  ),
                 ),
               ),
               const SizedBox(
@@ -124,14 +147,12 @@ class _LoginPageState extends State<LoginPage> {
                       );
                       return;
                     }
-                    // Navigator.of(context).push(
-                    //   MaterialPageRoute(
-                    //     builder: (_) => WelcomePage(
-                    //       email: _emailController.text,
-                    //       password: _passwordController.text,
-                    //     ),
-                    //   ),
-                    // );
+                    Navigator.of(context).push(
+                      MaterialPageRoute(
+                        builder: (_) => HomePage(
+                        ),
+                      ),
+                    );
                   },
                   child: Container(
                     width: 120.0,
@@ -143,10 +164,8 @@ class _LoginPageState extends State<LoginPage> {
                       borderRadius: BorderRadius.circular(
                         32.0,
                       ),
-                      gradient: LinearGradient(colors: [
-                        Colors.amber,
-                        Colors.orange.shade700,
-                      ], begin: Alignment.bottomLeft, end: Alignment.topRight),
+                      color: const Color(0xff207398)
+
                     ),
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.end,

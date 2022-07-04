@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:untitled/pages/home_page.dart';
 import 'package:untitled/pages/login_page.dart';
 
 void main() {
@@ -13,13 +14,14 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Flutter Demo',
+      title: 'GoodReads',
+      debugShowCheckedModeBanner: false,
       theme: ThemeData(
         fontFamily: GoogleFonts.poppins().fontFamily,
-        primarySwatch: Colors.blue,
-
+        scaffoldBackgroundColor: const Color(0xff1D212B),
+        primaryColor: const Color(0xff1D212B),
       ),
-      home:const  LoginPage()
+      home: const LoginPage(),
     );
   }
 }
