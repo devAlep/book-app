@@ -14,6 +14,7 @@ class CustomCarouselSlider extends StatelessWidget {
         autoPlay: true,
         scrollDirection: Axis.horizontal,
       ),
+      
       items: booksList.map(
         (book) {
           return CarouselItem(

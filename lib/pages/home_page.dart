@@ -18,9 +18,7 @@ class HomePage extends StatefulWidget {
 class _HomePageState extends State<HomePage> {
 
   final _screens = const [
-    DashboardScreen(
-
-    ),
+    DashboardScreen(),
      SearchScreen(),
      FavouritesScreen(),
      SettingsScreen()
@@ -31,14 +29,7 @@ class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Padding(
-        padding: const EdgeInsets.only(
-          top: 16.0,
-          left: 32.0,
-          right: 32.0,
-        ),
-        child: _screens[_currentSelectedIndex],
-      ),
+      body: _screens[_currentSelectedIndex],
       bottomNavigationBar: BottomNavBar(
         currentIndex: _currentSelectedIndex,
         onItemSelected: (index) {

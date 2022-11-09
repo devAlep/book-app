@@ -2,13 +2,19 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:untitled/pages/home_page.dart';
 import 'package:untitled/pages/login_page.dart';
+import 'package:untitled/util/prefs_utils.dart';
 
-void main() {
-  runApp(const MyApp());
+Future<void> main() async{
+  WidgetsFlutterBinding.ensureInitialized();
+  final token = await PrefsUtils.getToken();
+  debugPrint('token: $token');
+  runApp( MyApp(token: token,),);
 }
 
 class MyApp extends StatelessWidget {
-  const MyApp({Key? key}) : super(key: key);
+  const MyApp( {Key? key, required this.token}) : super(key: key);
+
+  final String token;
 
   // This widget is the root of your application.
   @override
@@ -21,7 +27,7 @@ class MyApp extends StatelessWidget {
         scaffoldBackgroundColor: const Color(0xff1D212B),
         primaryColor: const Color(0xff1D212B),
       ),
-      home: const LoginPage(),
+      home: token.isNotEmpty ? const HomePage() : const LoginPage(),
     );
   }
 }

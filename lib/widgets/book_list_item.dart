@@ -1,18 +1,16 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
+import 'package:untitled/util/constants/book_constants.dart';
 import 'package:untitled/widgets/book_subheader.dart';
 
 class BookListItem extends StatelessWidget {
   const BookListItem({
     Key? key,
-    required this.imageUrl,
-    required this.onFavouriteItemClicked,
-    required this.isFavourite,
+    required this.onFavouriteItemClicked, required this.book,
   }) : super(key: key);
-  final String imageUrl;
-  final Function onFavouriteItemClicked;
-  final bool isFavourite;
+  final DummyBook book;
+  final Function(int bookId) onFavouriteItemClicked;
 
   @override
   Widget build(BuildContext context) {
@@ -28,11 +26,13 @@ class BookListItem extends StatelessWidget {
                   12.0,
                 ),
                 child: CachedNetworkImage(
-                  imageUrl: imageUrl,
+                  imageUrl: book.imageUrl,
                   fit: BoxFit.cover,
                   progressIndicatorBuilder: (context, url, downloadProgress) =>
-                      CircularProgressIndicator(
-                          value: downloadProgress.progress),
+                      Center(
+                        child: CircularProgressIndicator(
+                            value: downloadProgress.progress),
+                      ),
                   errorWidget: (context, url, error) => const Icon(Icons.error),
                 ),
               ),
@@ -41,7 +41,7 @@ class BookListItem extends StatelessWidget {
                 right: 24.0,
                 child: GestureDetector(
                   onTap: () {
-                    onFavouriteItemClicked();
+                    onFavouriteItemClicked(book.id);
                   },
                   child: Container(
                     padding: const EdgeInsets.all(
@@ -52,7 +52,7 @@ class BookListItem extends StatelessWidget {
                     child: Icon(
                       MdiIcons.heart,
                       size: 16.0,
-                      color: isFavourite ? Colors.red : Colors.black,
+                      color: book.isFavourite ? Colors.red : Colors.black,
                     ),
                   ),
                 ),
